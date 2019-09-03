@@ -85,7 +85,7 @@ init:
 	touch README
 	git init
 	git remote add origin git@gitlab.com:gpdowning/cs371p-collatz.git
-	git add README
+	git add README.md
 	git commit -m 'first commit'
 	git push -u origin master
 
@@ -105,6 +105,7 @@ push:
 	-git add Collatz.log
 	-git add html
 	git add makefile
+	git add README.md
 	git add RunCollatz.c++
 	git add RunCollatz.ctd
 	git add RunCollatz.in
