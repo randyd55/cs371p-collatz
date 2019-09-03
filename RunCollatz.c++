@@ -17,4 +17,5 @@
 int main () {
     using namespace std;
     collatz_solve(cin, cout);
-    return 0;}
+    return 0;
+}

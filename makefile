@@ -73,7 +73,7 @@ ctd:
 	checktestdata RunCollatz.ctd RunCollatz.in
 
 docker:
-	docker run -it -v $(PWD):/usr/collatz -w /usr/collatz gpdowning/gcc
+	docker run -it -v $(PWD):/usr/gcc -w /usr/gcc gpdowning/gcc
 
 format:
 	astyle Collatz.c++
@@ -105,11 +105,11 @@ push:
 	-git add Collatz.log
 	-git add html
 	git add makefile
-	git add TestCollatz.c++
-	git add RunCollatz.out
-	git add RunCollatz.in
-	git add RunCollatz.ctd
 	git add RunCollatz.c++
+	git add RunCollatz.ctd
+	git add RunCollatz.in
+	git add RunCollatz.out
+	git add TestCollatz.c++
 	git commit -m "another commit"
 	git push
 	git status
@@ -118,6 +118,7 @@ run: RunCollatz.c++x TestCollatz.c++x
 
 scrub:
 	make clean
+	rm -f  *.orig
 	rm -f  Collatz.log
 	rm -f  Doxyfile
 	rm -rf collatz-tests

@@ -25,7 +25,8 @@ pair<int, int> collatz_read (const string& s) {
     int i;
     int j;
     sin >> i >> j;
-    return make_pair(i, j);}
+    return make_pair(i, j);
+}
 
 // ------------
 // collatz_eval
@@ -33,14 +34,16 @@ pair<int, int> collatz_read (const string& s) {
 
 int collatz_eval (int i, int j) {
     // <your code>
-    return i + j;}
+    return i + j;
+}
 
 // -------------
 // collatz_print
 // -------------
 
 void collatz_print (ostream& w, int i, int j, int v) {
-    w << i << " " << j << " " << v << endl;}
+    w << i << " " << j << " " << v << endl;
+}
 
 // -------------
 // collatz_solve
@@ -53,4 +56,6 @@ void collatz_solve (istream& r, ostream& w) {
         const int            i = p.first;
         const int            j = p.second;
         const int            v = collatz_eval(i, j);
-        collatz_print(w, i, j, v);}}
+        collatz_print(w, i, j, v);
+    }
+}
