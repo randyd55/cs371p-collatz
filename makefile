@@ -1,4 +1,4 @@
- g.DEFAULT_GOAL := all
+.DEFAULT_GOAL := all
 MAKEFLAGS += --no-builtin-rules
 
 ifeq ($(shell uname -s), Darwin)
