@@ -1,6 +1,41 @@
  g.DEFAULT_GOAL := all
 MAKEFLAGS += --no-builtin-rules
 
+ifeq ($(shell uname -s), Darwin)
+    ASTYLE        := astyle
+    BOOST         := /usr/local/include/boost
+    CHECKTESTDATA := checktestdata
+    CPPCHECK      := cppcheck
+    CXX           := g++-9
+    CXXFLAGS      := -fprofile-arcs -ftest-coverage -pedantic -std=c++17 -O3 -I/usr/local/include -Wall -Wextra
+    LDFLAGS       := -lgtest -lgtest_main
+    DOXYGEN       := doxygen
+    GCOV          := gcov-9
+    VALGRIND      := valgrind
+else ifeq ($(shell uname -p), unknown)
+    ASTYLE        := astyle
+    BOOST         := /usr/include/boost
+    CHECKTESTDATA := checktestdata
+    CPPCHECK      := cppcheck
+    CXX           := g++
+    CXXFLAGS      := -fprofile-arcs -ftest-coverage -pedantic -std=c++17 -O3 -Wall -Wextra
+    LDFLAGS       := -lgtest -lgtest_main -pthread
+    DOXYGEN       := doxygen
+    GCOV          := gcov
+    VALGRIND      := valgrind
+else
+    ASTYLE        := astyle
+    BOOST         := /usr/include/boost
+    CHECKTESTDATA := checktestdata
+    CPPCHECK      := cppcheck
+    CXX           := g++-9
+    CXXFLAGS      := -fprofile-arcs -ftest-coverage -pedantic -std=c++17 -O3 -Wall -Wextra
+    LDFLAGS       := -lgtest -lgtest_main -pthread
+    DOXYGEN       := doxygen
+    GCOV          := gcov-9
+    VALGRIND      := valgrind
+endif
+
 FILES :=                                  \
     .gitignore                            \
     collatz-tests                         \
@@ -23,7 +58,7 @@ collatz-tests:
 	git clone https://gitlab.com/gpdowning/cs371p-collatz-tests.git collatz-tests
 
 html: Doxyfile Collatz.h
-	doxygen Doxyfile
+	$(DOXYGEN) Doxyfile
 
 Collatz.log:
 	git log > Collatz.log
@@ -33,25 +68,25 @@ Collatz.log:
 # set EXTRACT_PRIVATE to YES
 # set EXTRACT_STATEIC to YES
 Doxyfile:
-	doxygen -g
+	$(DOXYGEN) -g
 
 RunCollatz: Collatz.h Collatz.c++ RunCollatz.c++
-	-cppcheck Collatz.c++
-	-cppcheck RunCollatz.c++
-	g++ -pedantic -std=c++14 -Wall -Weffc++ -Wextra Collatz.c++ RunCollatz.c++ -o RunCollatz
+	-$(CPPCHECK) Collatz.c++
+	-$(CPPCHECK) RunCollatz.c++
+	$(CXX) $(CXXFLAGS) Collatz.c++ RunCollatz.c++ -o RunCollatz
 
 RunCollatz.c++x: RunCollatz
 	./RunCollatz < RunCollatz.in > RunCollatz.tmp
 	-diff RunCollatz.tmp RunCollatz.out
 
 TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
-	-cppcheck Collatz.c++
-	-cppcheck TestCollatz.c++
-	g++ -fprofile-arcs -ftest-coverage -pedantic -std=c++14 -Wall -Weffc++ -Wextra  Collatz.c++ TestCollatz.c++ -o TestCollatz -lgtest -lgtest_main -pthread
+	-$(CPPCHECK) Collatz.c++
+	-$(CPPCHECK) TestCollatz.c++
+	$(CXX) $(CXXFLAGS) Collatz.c++ TestCollatz.c++ -o TestCollatz $(LDFLAGS)
 
 TestCollatz.c++x: TestCollatz
-	valgrind ./TestCollatz
-	gcov -b Collatz.c++ | grep -A 5 "File '.*Collatz.c++'"
+	$(VALGRIND) ./TestCollatz
+	$(GCOV) -b Collatz.c++ | grep -A 5 "File '.*Collatz.c++'"
 
 all: RunCollatz TestCollatz
 
@@ -70,16 +105,16 @@ config:
 	git config -l
 
 ctd:
-	checktestdata RunCollatz.ctd RunCollatz.in
+	$(CHECKTESTDATA) RunCollatz.ctd RunCollatz.in
 
 docker:
 	docker run -it -v $(PWD):/usr/gcc -w /usr/gcc gpdowning/gcc
 
 format:
-	astyle Collatz.c++
-	astyle Collatz.h
-	astyle RunCollatz.c++
-	astyle TestCollatz.c++
+	$(ASTYLE) Collatz.c++
+	$(ASTYLE) Collatz.h
+	$(ASTYLE) RunCollatz.c++
+	$(ASTYLE) TestCollatz.c++
 
 init:
 	touch README
@@ -134,39 +169,54 @@ status:
 	git status
 
 versions:
-	which         astyle
-	astyle        --version
+	@echo "% shell uname -p"
+	@echo  $(shell uname -p)
 	@echo
-	dpkg -s       libboost-dev | grep 'Version'
+	@echo "% shell uname -s"
+	@echo  $(shell uname -s)
 	@echo
-	ls -al        /usr/lib/*.a
+	@echo "% which $(ASTYLE)"
+	@which $(ASTYLE)
 	@echo
-	which         checktestdata
-	checktestdata --version
+	@echo "% $(ASTYLE) --version"
+	@$(ASTYLE) --version
 	@echo
-	which         cmake
-	cmake         --version
+	@echo "% grep \"#define BOOST_VERSION \" $(BOOST)/version.hpp"
+	@grep "#define BOOST_VERSION " $(BOOST)/version.hpp
 	@echo
-	which         cppcheck
-	cppcheck      --version
+	@echo "% which $(CHECKTESTDATA)"
+	@which $(CHECKTESTDATA)
 	@echo
-	which         doxygen
-	doxygen       --version
+	@echo "% $(CHECKTESTDATA) --version"
+	@$(CHECKTESTDATA) --version
 	@echo
-	which         g++
-	g++           --version
+	@echo "% which $(CXX)"
+	@which $(CXX)
 	@echo
-	which         gcov
-	gcov          --version
+	@echo "% $(CXX) --version"
+	@$(CXX) --version
+	@echo "% which $(CPPCHECK)"
+	@which $(CPPCHECK)
 	@echo
-	which         git
-	git           --version
+	@echo "% $(CPPCHECK) --version"
+	@$(CPPCHECK) --version
 	@echo
-	which         make
-	make          --version
+	@$(CXX) --version
+	@echo "% which $(DOXYGEN)"
+	@which $(DOXYGEN)
 	@echo
-	which         valgrind
-	valgrind      --version
+	@echo "% $(DOXYGEN) --version"
+	@$(DOXYGEN) --version
 	@echo
-	which         vim
-	vim           --version
+	@echo "% which $(GCOV)"
+	@which $(GCOV)
+	@echo
+	@echo "% $(GCOV) --version"
+	@$(GCOV) --version
+ifneq ($(shell uname -s), Darwin)
+	@echo "% which $(VALGRIND)"
+	@which $(VALGRIND)
+	@echo
+	@echo "% $(VALGRIND) --version"
+	@$(VALGRIND) --version
+endif
