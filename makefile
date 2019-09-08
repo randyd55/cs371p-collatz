@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := all
+ g.DEFAULT_GOAL := all
 MAKEFLAGS += --no-builtin-rules
 
 ifeq ($(shell uname -s), Darwin)
@@ -167,6 +167,31 @@ status:
 	git branch
 	git remote -v
 	git status
+
+sync:
+	make clean
+	@pwd
+	@rsync -r -t -u -v --delete            \
+    --include "Collatz.c++"                \
+    --include "Collatz.h"                  \
+    --include "RunCollatz.c++"             \
+    --include "RunCollatz.ctd"             \
+    --include "RunCollatz.in"              \
+    --include "RunCollatz.out"             \
+    --include "TestCollatz.c++"            \
+    --exclude "*"                          \
+    ~/projects/c++/collatz/ .
+	@rsync -r -t -u -v --delete            \
+    --include "makefile"                   \
+    --include "Collatz.c++"                \
+    --include "Collatz.h"                  \
+    --include "RunCollatz.c++"             \
+    --include "RunCollatz.ctd"             \
+    --include "RunCollatz.in"              \
+    --include "RunCollatz.out"             \
+    --include "TestCollatz.c++"            \
+    --exclude "*"                          \
+    . downing@$(CS):cs/git/cs371p-collatz/
 
 versions:
 	@echo "% shell uname -p"
