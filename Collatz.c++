@@ -38,8 +38,12 @@ int collatz_eval (int i, int j) {
     assert(i < j);
     int max_collatz = -1;
     int index;
+    int lazy_cache[max(i, j)];
+    for(index = 0; index < j; index++){
+        lazy_cache[index] = -1;
+    }
     for(index = i; index <= j; index++){
-        int temp = collatz_single(index);
+        int temp = (lazy_cache[index] == -1 ? collatz_single(index) : lazy_cache[index]);
         if(temp > max_collatz){
             max_collatz = temp;
         }
