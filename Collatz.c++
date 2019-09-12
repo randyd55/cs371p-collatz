@@ -31,26 +31,6 @@ pair<int, int> collatz_read (const string& s) {
 // ------------
 // collatz_eval
 // ------------
-
-int collatz_eval (int i, int j) {
-    assert(i > 0);
-    assert(j < 1000000);
-    assert(i < j);
-    int max_collatz = -1;
-    int index;
-    int lazy_cache[max(i, j)];
-    for(index = 0; index < j; index++){
-        lazy_cache[index] = -1;
-    }
-    for(index = i; index <= j; index++){
-        int temp = (lazy_cache[index] == -1 ? collatz_single(index) : lazy_cache[index]);
-        if(temp > max_collatz){
-            max_collatz = temp;
-        }
-    }
-    return max_collatz;
-}
-
 int collatz_single(int i) {
     int count = 1;
     while(i > 1){
@@ -63,6 +43,34 @@ int collatz_single(int i) {
         count++;
     }
     return count;
+}
+
+int collatz_eval (int i, int j) {
+    assert(i > 0);
+    assert(j < 1000000);
+    assert(i < j);
+    int max_collatz = -1;
+    int index;
+    int lazy_cache[max(i, j)];
+    for(index = 0; index < j; index++){
+        lazy_cache[index] = -1;
+    }
+    lazy_cache[0] = 0;
+    for(index = i; index < j; index++){
+        int temp;
+        if(lazy_cache[index] == -1){
+            temp = collatz_single(index);
+            lazy_cache[index] = temp;
+        }
+        else{
+            temp = lazy_cache[index];
+        }
+        if(temp > max_collatz){
+            max_collatz = temp;
+        }
+        int f;
+    }
+    return max_collatz;
 }
 
 // -------------
