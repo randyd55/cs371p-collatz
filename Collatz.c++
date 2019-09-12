@@ -33,22 +33,22 @@ pair<int, int> collatz_read (const string& s) {
 // ------------
 
 int collatz_eval (int i, int j) {
-    ASSERT(i > 0);
-    ASSERT(j < 1000000);
-    ASSERT(i < j);
-    int max_collatz = -1
-    int index
+    assert(i > 0);
+    assert(j < 1000000);
+    assert(i < j);
+    int max_collatz = -1;
+    int index;
     for(index = i; index <= j; index++){
         int temp = collatz_single(index);
         if(temp > max_collatz){
             max_collatz = temp;
         }
     }
-    return temp;
+    return max_collatz;
 }
 
 int collatz_single(int i) {
-    int count = 0;
+    int count = 1;
     while(i > 1){
         if((i % 2) == 0){
             i /= 2;

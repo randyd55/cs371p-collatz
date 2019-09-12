@@ -76,5 +76,5 @@ TEST(CollatzFixture, solve) {
     istringstream r("1 10\n100 200\n201 210\n900 1000\n");
     ostringstream w;
     collatz_solve(r, w);
-    ASSERT_EQ("1 10 11\n100 200 300\n201 210 411\n900 1000 1900\n", w.str());
+    ASSERT_EQ("1 10 20\n100 200 125\n201 210 89\n900 1000 174\n", w.str());
 }
