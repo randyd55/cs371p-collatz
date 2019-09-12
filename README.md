@@ -1,18 +1,18 @@
 # CS371p: Object-Oriented Programming Collatz Repo
 
-* Name: (your Full Name)
+* Name: Randal Donaldson
 
-* EID: (your EID)
+* EID: rgd546
 
-* GitLab ID: (your GitLab ID)
+* GitLab ID: randizzleDee
 
-* HackerRank ID: (your HackerRank ID)
+* HackerRank ID: randyd554
 
 * Git SHA: (most recent Git SHA, final change to your repo will be adding this value)
 
 * GitLab Pipelines: (link to your GitLab CI Pipeline)
 
-* Estimated completion time: (estimated time in hours, int or float)
+* Estimated completion time: 7
 
 * Actual completion time: (actual time in hours, int or float)
 
