@@ -37,13 +37,13 @@ int collatz_eval (int i, int j) {
     ASSERT(j < 1000000);
     ASSERT(i < j);
     int max_collatz = -1
-    for(int index = i; index <= j; index++){
+    int index
+    for(index = i; index <= j; index++){
         int temp = collatz_single(index);
         if(temp > max_collatz){
             max_collatz = temp;
         }
     }
-    // <your code>
     return temp;
 }
 
