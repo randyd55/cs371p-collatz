@@ -38,7 +38,8 @@ int collatz_single(int i) {
             i /= 2;
         }
         else{
-            i = i * 3 + 1;
+            i = i + i/2 + 1;
+            count++;
         }
         count++;
     }
