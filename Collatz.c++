@@ -31,10 +31,14 @@ pair<int, int> collatz_read (const string& s) {
 // ------------
 // collatz_eval
 // ------------
-int collatz_single(int i) {
+int collatz_single(int i, int cache[]) {
     int count = 1;
+    int store = i;
     while(i > 1){
-        if((i % 2) == 0){
+        if(cache[i] != -1){
+            return cache[i] + count - 1;
+        }
+        else if((i % 2) == 0){
             i /= 2;
         }
         else{
@@ -49,18 +53,18 @@ int collatz_single(int i) {
 int collatz_eval (int i, int j) {
     assert(i > 0);
     assert(j < 1000000);
-    assert(i < j);
     int max_collatz = -1;
     int index;
-    int lazy_cache[max(i, j)];
-    for(index = 0; index < j; index++){
+    int lazy_cache[1000001];
+    for(index = 0; index < 1000001; index++){
         lazy_cache[index] = -1;
     }
     lazy_cache[0] = 0;
+    lazy_cache[1] = 1;
     for(index = i; index < j; index++){
         int temp;
         if(lazy_cache[index] == -1){
-            temp = collatz_single(index);
+            temp = collatz_single(index, lazy_cache);
             lazy_cache[index] = temp;
         }
         else{
@@ -69,7 +73,6 @@ int collatz_eval (int i, int j) {
         if(temp > max_collatz){
             max_collatz = temp;
         }
-        int f;
     }
     return max_collatz;
 }
