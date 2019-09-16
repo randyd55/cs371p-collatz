@@ -34,30 +34,33 @@ int cache[100000000];
 // ------------
 int collatz_single(long long i) {
     int count = 1;
-    //int store = i;
+    assert(i > 0);
     while(i > 1){
-        if(i < 100000000 && cache[i] > 0)
+        if(i < 100000000 && cache[i] > 0)  //We only cache cycle lengths up to 100000000 to avoid overflow
             return cache[i] + count - 1;
         else if((i % 2) == 0){
             i /= 2;
         }
         else{
-            i = i + i/2 + 1;
+            i = i + i/2 + 1;               //On odd case, we take two steps at a time
             count++;
         }
         count++;
     }
+    assert(count > 0);
     return count;
 }
 
 int collatz_eval (int i, int j) {
     assert(i > 0);
     assert(j < 100000000);
+    assert(i < 100000000);
+    assert(j > 0);
     int max_collatz = collatz_single(i);
     int index;
     cache[0] = 0;
     cache[1] = 1;
-    int start = min(i, j);
+    int start = min(i, j);                       //For case where i > j
     int end = max(i , j);
     for(index = start; index <= end; index++){
         int temp;
@@ -66,12 +69,13 @@ int collatz_eval (int i, int j) {
             cache[index] = temp;
         }
         else{
-            temp = cache[index];
+            temp = cache[index];                 //Cycle length has already been cached
         }
         if(temp > max_collatz){
             max_collatz = temp;
         }
     }
+    assert(max_collatz > 0);
     return max_collatz;
 }
 
