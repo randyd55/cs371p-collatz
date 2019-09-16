@@ -12,7 +12,7 @@
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
 
-#include "Collatz.h"
+//#include "Collatz.h"
 
 using namespace std;
 
@@ -28,16 +28,16 @@ pair<int, int> collatz_read (const string& s) {
     return make_pair(i, j);
 }
 
+int cache[100000000];
 // ------------
 // collatz_eval
 // ------------
-int collatz_single(int i, int cache[]) {
+int collatz_single(long long i) {
     int count = 1;
-    int store = i;
+    //int store = i;
     while(i > 1){
-        if(cache[i] != -1){
+        if(i < 100000000 && cache[i] > 0)
             return cache[i] + count - 1;
-        }
         else if((i % 2) == 0){
             i /= 2;
         }
@@ -52,23 +52,21 @@ int collatz_single(int i, int cache[]) {
 
 int collatz_eval (int i, int j) {
     assert(i > 0);
-    assert(j < 1000000);
-    int max_collatz = -1;
+    assert(j < 100000000);
+    int max_collatz = collatz_single(i);
     int index;
-    int lazy_cache[1000001];
-    for(index = 0; index < 1000001; index++){
-        lazy_cache[index] = -1;
-    }
-    lazy_cache[0] = 0;
-    lazy_cache[1] = 1;
-    for(index = i; index < j; index++){
+    cache[0] = 0;
+    cache[1] = 1;
+    int start = min(i, j);
+    int end = max(i , j);
+    for(index = start; index <= end; index++){
         int temp;
-        if(lazy_cache[index] == -1){
-            temp = collatz_single(index, lazy_cache);
-            lazy_cache[index] = temp;
+        if(cache[index] == 0){
+            temp = collatz_single(index);
+            cache[index] = temp;
         }
         else{
-            temp = lazy_cache[index];
+            temp = cache[index];
         }
         if(temp > max_collatz){
             max_collatz = temp;

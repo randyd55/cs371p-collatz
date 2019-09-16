@@ -41,7 +41,11 @@ int collatz_eval (int i, int j);
 // collatz_single
 // ------------
 
-int collatz_single(int i);
+/**
+ * @param i the number to calculate the cycle length of
+ * @return the cycle length of i
+ */
+int collatz_single(long long i);
 
 // -------------
 // collatz_print
