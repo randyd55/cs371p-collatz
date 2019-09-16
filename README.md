@@ -8,12 +8,12 @@
 
 * HackerRank ID: randyd554
 
-* Git SHA: (most recent Git SHA, final change to your repo will be adding this value)
+* Git SHA: e278daa73838cfb479c22d81eb14b3f33b162084
 
-* GitLab Pipelines: (link to your GitLab CI Pipeline)
+* GitLab Pipelines: https://gitlab.com/randizzleDee/cs371p-collatz/pipelines
 
 * Estimated completion time: 7
 
-* Actual completion time: (actual time in hours, int or float)
+* Actual completion time: 9
 
 * Comments: (any additional comments you have)
