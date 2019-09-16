@@ -1,3 +1,9 @@
+commit 87f7bef773c0c5bb3d8404b0328e484d9feaf24c
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Mon Sep 16 15:20:44 2019 -0500
+
+    Ran doxygen on Collatz.h
+
 commit 7225ed679ae82797ffbe65f70f71962692dc2eef
 Author: Randal Donaldson <randyd55@cs.utexas.edu>
 Date:   Mon Sep 16 14:43:02 2019 -0500
