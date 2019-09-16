@@ -1,0 +1,143 @@
+commit 7225ed679ae82797ffbe65f70f71962692dc2eef
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Mon Sep 16 14:43:02 2019 -0500
+
+    Added some clarifying inline comments to Collatz.c++
+
+commit 12b0e0912616876791371791d3ae1883be1aefec
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Mon Sep 16 14:33:47 2019 -0500
+
+    Added asserts to check pre and post conditions. Added 250 unit tests.
+
+commit 29737284f251547286e3a90985e3efc27b1918c9
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Fri Sep 13 20:41:55 2019 -0500
+
+    Fixed cases where i > j and  i =j. Also fixed integer overflow
+
+commit 3ae976f33c58eaea02d5cb2ad3a202d3cef23d3c
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Fri Sep 13 14:49:58 2019 -0500
+
+    Changed cycle length function to take two steps on odd integers. Closes
+
+commit 57f5827f2d98be3984d430252068e0d7af5fa0bf
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Thu Sep 12 17:52:53 2019 -0500
+
+    Fixed bounds on range loop. Closes #12
+
+commit 36bc40f3492d8fdd9cddd3f197eb6582388a54df
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Thu Sep 12 17:30:59 2019 -0500
+
+    Implemented a lazy cache. Closes #11
+
+commit 6b3cd7c828152d2a24c8549267d0fcb957990a73
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Thu Sep 12 16:25:28 2019 -0500
+
+    Tests are actually fixed now, and simple collatz is implemented
+
+commit 2b21f831e2dde878e4accddc91f6739388f6539c
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Thu Sep 12 16:03:19 2019 -0500
+
+    Fixed build errors in simple collatz implementation
+
+commit 670067286dd11973db7445e6e43fd587145dee4c
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Thu Sep 12 15:58:36 2019 -0500
+
+    Implemented simple collatz
+
+commit f3de558b41acabe10b45440c8e228c1cab560c61
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Thu Sep 12 15:41:23 2019 -0500
+
+    Fixed the acceptance tests
+
+commit 75d27bee3aea529dfee26b9fe03b0b31e70a84a4
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Thu Sep 12 14:51:21 2019 -0500
+
+    Filled out the Readme file
+
+commit 1c58ad409b7134a42239d8434f71e21baf5f8e02
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Tue Sep 10 10:34:37 2019 -0500
+
+    another commit
+
+commit 4d9f008eeb4e0cadb61df9f8b88f0967ecc78378
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Tue Sep 10 10:34:10 2019 -0500
+
+    another commit
+
+commit ed78c7d039b9cad29c7b5e3764593a89cf812712
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Tue Sep 10 10:33:25 2019 -0500
+
+    another commit
+
+commit 7be3a7e4edc66bf508f7b6eb546097cb043700c7
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Tue Sep 10 10:33:17 2019 -0500
+
+    another commit
+
+commit d7cd13099c517602c7b048de8725f6f33a511315
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Tue Sep 10 10:31:43 2019 -0500
+
+    another commit
+
+commit e5ae8bac70ec24b6865ad05a78105b5e54650e8d
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sat Sep 7 20:14:32 2019 -0500
+
+    another commit
+
+commit 0c1f7efd032c1f0f7996590da2273855afb70cf4
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sat Sep 7 16:56:42 2019 -0500
+
+    another commit
+
+commit 7b40f05a6851c6fd55b17a2b6abe5045a069b526
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sat Sep 7 16:55:25 2019 -0500
+
+    another commit
+
+commit b9fba55d34e6224ecc54d046400a60f2e512e5be
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Tue Sep 3 18:02:47 2019 -0500
+
+    another commit
+
+commit 5b9af55157b1eb116a6093ecb20da91c1a007808
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Tue Sep 3 22:38:04 2019 +0000
+
+    Delete README
+
+commit 20262ca5b4e0f48b3ec18fa8d9e83b4c261ace1c
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Tue Sep 3 16:47:00 2019 -0500
+
+    another commit
+
+commit afd407381b27c2d622a436cb1d44050b6c45173b
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Tue Sep 3 16:13:45 2019 -0500
+
+    another commit
+
+commit 68a7b85913054ee625266d16466a90206cdeb148
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Tue Sep 3 16:01:57 2019 -0500
+
+    first commit
