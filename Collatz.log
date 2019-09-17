@@ -1,3 +1,21 @@
+commit 6580b83c604f0410e11eece1df107cf1577ed232
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Tue Sep 17 10:20:57 2019 -0500
+
+    Actually added acceptance tests
+
+commit 10907dd399857d3622d037bd3469b36e86d5204c
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Mon Sep 16 15:37:03 2019 -0500
+
+    Added SHA and pipeline to readme
+
+commit e278daa73838cfb479c22d81eb14b3f33b162084
+Author: Randal Donaldson <randyd55@cs.utexas.edu>
+Date:   Mon Sep 16 15:21:35 2019 -0500
+
+    Updated commit log
+
 commit 87f7bef773c0c5bb3d8404b0328e484d9feaf24c
 Author: Randal Donaldson <randyd55@cs.utexas.edu>
 Date:   Mon Sep 16 15:20:44 2019 -0500
