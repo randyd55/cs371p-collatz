@@ -78,6 +78,10 @@ TEST(CollatzFixture, eval_9) {
     ASSERT_EQ(v, 117);
 }
 
+TEST(CollatzFixture, eval_10){
+    const int v = collatz_eval(10000001, 10000002);
+    ASSERT_EQ(v, 138);
+}
 // ----
 // single
 // ----
@@ -110,6 +114,11 @@ TEST(CollatzFixture, single_5) {
 TEST(CollatzFixture, single_6) {
     const int v = collatz_single(2);
     ASSERT_EQ(v, 2);
+}
+
+TEST(CollatzFixture, single_7) {
+    const int v = collatz_single(432156);
+    ASSERT_EQ(v, 144);
 }
 
 // -----

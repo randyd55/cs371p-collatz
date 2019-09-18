@@ -43,11 +43,16 @@ FILES :=                                  \
     Collatz.h                             \
     makefile                              \
     RunCollatz.c++                        \
-    TestCollatz.c++						  \
-    collatz-tests/randizzleDee-RunCollatz.in \
-    collatz-tests/randizzleDee-RunCollatz.out \
-    Collatz.log                           \
-    html                                  \
+    RunCollatz.in                         \
+    RunCollatz.out                        \
+    TestCollatz.c++
+
+ uncomment these four lines when you've created those files
+# you must replace GitLabID with your GitLabID
+#    collatz-tests/GitLabID-RunCollatz.in  \
+#    collatz-tests/GitLabID-RunCollatz.out \
+#    Collatz.log                           \
+#    html                                  \
 
 collatz-tests:
 	git clone https://gitlab.com/gpdowning/cs371p-collatz-tests.git collatz-tests
